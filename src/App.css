@@ -31,3 +31,11 @@
   font-weight: bold;
   border: none;
 }
+
+.phones_wrapper {
+  display: flex;
+  margin: 50px;
+}
+.images {
+  width: 150px;
+}
