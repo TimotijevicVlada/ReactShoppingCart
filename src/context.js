@@ -1,15 +1,17 @@
-import React, {useState, useEffect, useContext, useReducer} from 'react';
+import React, {useState, useEffect, createContext, useContext, useReducer} from 'react';
 import {data} from './data';
 import reducer from './reducer';
 
-const AppContext = React.createContext();
+const AppContext = createContext();
 
 const AppProvider = ({children}) => {
     
     const [cart, setCart] = useState(data);
 
+    //console.log(cart)
+
     return (
-        <AppContext.Provider valuer={{cart}}>
+        <AppContext.Provider value={{cart}}>
             {children}
         </AppContext.Provider>
     )
