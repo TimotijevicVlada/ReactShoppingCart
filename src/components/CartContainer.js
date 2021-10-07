@@ -2,6 +2,7 @@ import React from 'react';
 import { useGlobalContext } from '../context';
 import { data } from '../data';
 import CartItem from './CartItem';
+import Footer from './Footer';
 
 const CartContainer = () => {
 
@@ -26,6 +27,7 @@ const CartContainer = () => {
                     <CartItem key={item.id} {...item}/>
                 ))}
             </div>
+            <Footer />
         </div>
     )
 }
