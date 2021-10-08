@@ -1,23 +1,11 @@
-import React from "react";
-import { useGlobalContext } from "../context";
+import React from 'react';
 
 const Footer = () => {
-
-    const {total, clearCart} = useGlobalContext();
-
-  return (
-    <div>
-      <hr />
-      <div className="cart-total">
-        <h4>
-          total <span>${total}</span>
-        </h4>
-      </div>
-      <button className="btn clear-btn" onClick={clearCart}>
-        clear cart
-      </button>
-    </div>
-  );
-};
+    return (
+        <div className="footer">
+            &copy; Shopping cart by |<span> Vladimir Timotijevic</span>
+        </div>
+    )
+}
 
 export default Footer;
