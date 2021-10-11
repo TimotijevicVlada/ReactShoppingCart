@@ -37,12 +37,12 @@
   font-weight: bold;
   border: none;
 }
-.sortPrice {
+.sortPrice, .filterProducts {
   padding: 5px;
   font-size: 18px;
   border: none;
 }
-.sortPrice:focus {
+.sortPrice:focus, .filterProducts:focus {
   outline: none;
 }
 
@@ -77,9 +77,6 @@ header {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
-}
-.cart_item .image {
-  width: 25%;
 }
 .cart_item .image img {
   width: 150px;
@@ -161,4 +158,25 @@ header {
 }
 .footer span {
   color: lightseagreen;
+}
+
+
+@media screen and (max-width: 600px) {
+  .navbar .logo {
+    font-size: 20px;
+    padding: 15px 5px;
+  }
+  .sortPrice, .filterProducts {
+    font-size: 15px;
+  }
+  .cart_item .product_number {
+    margin-right: 12px;
+  }
+  .sum {
+    margin-right: 12px;
+  }
+  .footer {
+    font-size: 17px;
+    padding: 20px 0px;
+  }
 }

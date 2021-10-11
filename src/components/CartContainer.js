@@ -1,6 +1,6 @@
 import React from "react";
 
-const CartContainer = ({ phones, removeItem, increaseQuantity, decreaseQuantity, printProducts }) => {
+const CartContainer = ({ products, removeItem, increaseQuantity, decreaseQuantity, printProducts }) => {
 
 
   return (
@@ -9,14 +9,14 @@ const CartContainer = ({ phones, removeItem, increaseQuantity, decreaseQuantity,
         <h2>Your Cart</h2>
       </header>
       <div className="cartItem_container">
-        {phones.length === 0 ? (
+        {products.length === 0 ? (
           <div className="emptyCart">
             <h1>Your cart is empty</h1>
             <button className="backBtn" onClick={printProducts}>Bring back the products</button>
           </div>
           
         ) : (
-          phones.map((item) => (
+          products.map((item) => (
             <div className="cart_item" key={item.id}>
               <div className="image">
                 <img src={item.img} alt={item.title} />

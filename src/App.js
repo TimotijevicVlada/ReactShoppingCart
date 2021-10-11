@@ -12,9 +12,24 @@ function App() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalProducts, setTotalProducts] = useState(0);
   const [sortOrder, setSortOrder] = useState("ASC");
+  const [filteredName, setFilteredName] = useState("All");
 
+
+  //Filter products by name
+  const filteredProducts = () => {
+    if(filteredName === "All") {
+      return phones;
+    } else {
+      return phones.filter(item => item.title === filteredName);
+    }
+  }
+
+  //Array for printing
+  const products = filteredProducts();
+  
+  //Initial printing products after refreshing the page
   const printProducts = useCallback(  () => {
-    if(sortOrder === "ASC") {
+    if(sortOrder === "DESC") {
       setPhones(data.sort((a, b) => b.price - a.price));
     } else {
       setPhones(data.sort((a, b) => a.price - b.price));
@@ -23,22 +38,25 @@ function App() {
 
   useEffect(() => {
     printProducts();
-  }, [printProducts])
+  }, [printProducts, filteredName])
 
   const totalPriceRef = useRef();
   const totalProductRef = useRef();
 
+
+  //Function that calculate total price off all products
   const printTotalPrice = () => {
     let newPrice = 0;
-    phones.map((item) => {
+    products.map((item) => {
       return (newPrice += item.price * item.quantity);
     });
     setTotalPrice(newPrice);
   };
 
+  //Function that calculate total number of products
   const printTotalProducts = () => {
     let numProducts = 0;
-    phones.map((item) => {
+    products.map((item) => {
       return (numProducts += item.quantity);
     });
     setTotalProducts(numProducts);
@@ -50,13 +68,15 @@ function App() {
   useEffect(() => {
     totalPriceRef.current();
     totalProductRef.current();
-  }, [phones]);
+  }, [phones, filteredName]);
 
+  //Function that remove product on the button "remove"
   const removeItem = (id) => {
     const deleted = phones.filter((item) => item.id !== id);
     setPhones(deleted);
   };
 
+  //Function that increase quantity of products
   const increaseQuantity = (id) => {
     let increased = phones.map((item) => {
       if (item.id === id) {
@@ -70,6 +90,7 @@ function App() {
     setPhones(increased);
   };
 
+  //Function that decrease quantity of products
   const decreaseQuantity = (id) => {
     let decreased = phones.map((item) => {
       if (item.id === id) {
@@ -85,9 +106,9 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar totalProducts={totalProducts} setSortOrder={setSortOrder}/>
+      <Navbar totalProducts={totalProducts} setSortOrder={setSortOrder} setFilteredName={setFilteredName}/>
       <CartContainer
-        phones={phones}
+        products={products}
         removeItem={removeItem}
         increaseQuantity={increaseQuantity}
         decreaseQuantity={decreaseQuantity}

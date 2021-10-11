@@ -1,14 +1,14 @@
 export const data = [
     {
         id: 1,
-        title: "Iphone 13 pro max",
+        title: "Iphone",
         price: 899,
         img: "./images/iphone.jpg",
         quantity: 1
     },
     {
         id: 2,
-        title: "Samsung Galaxy 21",
+        title: "Samsung",
         price: 799,
         img: "./images/samsung.jpg",
         quantity: 1
